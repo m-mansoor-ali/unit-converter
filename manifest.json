@@ -1,0 +1,7 @@
+{
+  "name": "unit-converter",
+  "short_name": "unit-converter",
+  "description": "Unit Converter is a really usefull app that lets you easily convert from various units into lots of others.",
+  "start_url": "/",
+  "display": "standalone"
+}

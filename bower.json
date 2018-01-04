@@ -1,0 +1,12 @@
+{
+  "name": "unit-converter",
+  "description": "Unit Converter is a really usefull app that lets you easily convert from various units into lots of others.",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  },
+  "devDependencies": {
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  }
+}
