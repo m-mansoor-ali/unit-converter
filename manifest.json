@@ -1,7 +1,27 @@
-{
-  "name": "unit-converter",
-  "short_name": "unit-converter",
+{ 
+  "name": "Unit Converter",
+  "short_name": "Unit Converter",
   "description": "Unit Converter is a really usefull app that lets you easily convert from various units into lots of others.",
-  "start_url": "/",
-  "display": "standalone"
+  "start_url": "/?utm_source=homescreen",
+  "display": "standalone",
+  "orientation": "portrait"  ,
+  "background_color": "#00695C",
+  "theme_color": "#00695C",
+  "icons": [
+    {
+      "src": "images/manifest/icon-48x48.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "images/manifest/icon-96x96.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "images/manifest/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
 }
