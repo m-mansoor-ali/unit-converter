@@ -1,12 +1,37 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="unit-converter-app-styles">
-    <template>
-      <style>
-        :host {
-          display: block;
-          background-color: blue;
-        }
-      </style>
-    </template>
-  </dom-module>
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      app-header {
+        background-color: var(--paper-teal-500);
+        color: #fff;
+      }
+      paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      }
+      paper-item, paper-icon-item {
+        font-weight: 100;
+        font-size: large;
+      }
+      paper-icon-item[focused], paper-item[focused] {
+        outline-color: var(--paper-teal-50) !important;
+      }
+      paper-icon-item.iron-selected, paper-item.iron-selected {
+        background-color: var(--paper-teal-50) !important;
+        font-weight: 400;
+    }
+    paper-listbox {
+      height: calc(100vh - 64px);
+      overflow-x: auto;
+    }
+    </style>
+  </template>
+</dom-module>
