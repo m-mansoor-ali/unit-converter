@@ -1,33 +1,16 @@
-# \<unit-converter\>
+# Unit Converter
 
 Unit Converter is a really usefull app that lets you easily convert from various units into lots of others.
 
-## Install the Polymer-CLI
+Unit Converter
+===================
 
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
 
-## Viewing Your Application
+Unit Converter is a really usefull app that lets you easily convert from various units into lots of others.
 
-```
-$ polymer serve
-```
+An **offline-first** progressive web application (**PWA**) I am developing as a hobby project in order to learn and implement new web dev concepts such as **service workers**, **PRPL** pattern, and the **app shell** model.
 
-## Building Your Application
+Developed using [Polymer](https://github.com/Polymer/polymer)
 
-```
-$ polymer build
-```
 
-This will create builds of your application in the `build/` directory, optimized to be served in production. You can then serve the built versions by giving `polymer serve` a folder to serve from:
-
-```
-$ polymer serve build/default
-```
-
-## Running Tests
-
-```
-$ polymer test
-```
-
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+----------
