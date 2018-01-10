@@ -4,14 +4,18 @@
  * @polymer
  */
 class UnitConverterApp extends Polymer.Element {
-    static get is() { return 'unit-converter-app'; }
+    static get is() { console.log(units); return 'unit-converter-app'; }
     static get properties() {
         return {
-            prop1: {
-                type: String,
-                value: 'unit-converter-app'
+            unitData: {
+                type: Array
             }
         };
+    }
+    
+    connectedCallback(){
+        super.connectedCallback();
+        this.unitData = units;
     }
 }
 

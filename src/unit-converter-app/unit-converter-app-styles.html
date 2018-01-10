@@ -1,8 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <dom-module id="unit-converter-app-styles">
   <template>
-    <style>
+    <style include="iron-flex iron-flex-alignment">
       :host {
         display: block;
       }
@@ -11,27 +12,49 @@
         background-color: var(--paper-teal-500);
         color: #fff;
       }
+
       paper-icon-button {
         --paper-icon-button-ink-color: white;
       }
+
       app-drawer-layout:not([narrow]) [drawer-toggle] {
         display: none;
       }
-      paper-item, paper-icon-item {
+
+      paper-item,
+      paper-icon-item {
         font-weight: 100;
         font-size: large;
+        cursor: pointer;
       }
-      paper-icon-item[focused], paper-item[focused] {
+
+      paper-icon-item[focused],
+      paper-item[focused] {
         outline-color: var(--paper-teal-50) !important;
       }
-      paper-icon-item.iron-selected, paper-item.iron-selected {
+
+      paper-icon-item.iron-selected,
+      paper-item.iron-selected {
         background-color: var(--paper-teal-50) !important;
         font-weight: 400;
-    }
-    paper-listbox {
-      height: calc(100vh - 64px);
-      overflow-x: auto;
-    }
+      }
+
+      paper-listbox {
+        height: calc(100vh - 64px);
+        overflow-x: auto;
+      }
+
+      paper-button.grid-button {
+        width: 70%;
+        background-color: var(--google-red-500);
+        color: white !important;
+        margin: 10px;
+        text-transform: capitalize;
+      }
+
+      .grid-container {
+        padding-top: 3vh;
+      }
     </style>
   </template>
 </dom-module>

@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
@@ -14,7 +15,11 @@
 <link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
 
+<link rel="import" href="../../bower_components/iron-grid/iron-grid.html">
+
 <link rel="import" href="unit-converter-app-styles.html">
+
+<link rel="import" href="../common/custom-icons.html">
 
 <dom-module id="unit-converter-app">
   <template>
@@ -22,41 +27,113 @@
 
     <app-drawer-layout>
 
-      <app-drawer slot="drawer" has-scrolling-region>
+      <app-drawer slot="drawer" has-scrolling-region swipe-open>
         <app-toolbar>Menu</app-toolbar>
-
         <paper-listbox>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:clock"></iron-icon> Time</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:ruler"></iron-icon> Length</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:thermometer-lines"></iron-icon> Temperature</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:speedometer"></iron-icon> Speed</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:scale-balance"></iron-icon> Mass</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:cube-outline"></iron-icon> Area</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:flask-outline"></iron-icon> Volume</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:floppy"></iron-icon> Digital Storage</paper-icon-item>
-          <paper-icon-item><iron-icon slot="item-icon" icon="custom:fuel"></iron-icon> Fuel Consumption</paper-icon-item>
-
-
+          <template is="dom-repeat" items="{{unitData}}">
+              <paper-icon-item>
+                  <iron-icon slot="item-icon" icon="[[item.icon]]"></iron-icon> [[item.name]]</paper-icon-item>
+          </template>
         </paper-listbox>
       </app-drawer>
 
       <app-header-layout>
-
         <app-header slot="header" reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <div main-title>Unit Converter</div>
-            <paper-icon-button icon="custom:close-white" style="margin-left: auto"></paper-icon-button>
+            <paper-icon-button icon="custom:close-w" style="margin-left: auto"></paper-icon-button>
           </app-toolbar>
         </app-header>
-
-
-
       </app-header-layout>
+
+      <div class="grid-container layout center">
+        <iron-grid>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:clock-w"></iron-icon>
+              <br/>
+              <div>Time</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:ruler-w"></iron-icon>
+              <br/>
+              <div>Length</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:thermometer-lines-w"></iron-icon>
+              <br/>
+              <div>Temperature</div>
+            </paper-button>
+          </div>
+
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:speedometer-w"></iron-icon>
+              <br/>
+              <div>Speed</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:scale-balance-w"></iron-icon>
+              <br/>
+              <div>Mass</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:cube-outline-w"></iron-icon>
+              <br/>
+              <div>Area</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:flask-outline-w"></iron-icon>
+              <br/>
+              <div>Volume</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:floppy-w"></iron-icon>
+              <br/>
+              <div>Digital Storage</div>
+            </paper-button>
+          </div>
+          <div class="xs6 s6 m4 l4 layout center-justified">
+            <paper-button class="grid-button layout vertical">
+              <iron-icon icon="custom:fuel-w"></iron-icon>
+              <br/>
+              <div>Fuel</div>
+            </paper-button>
+          </div>
+        </iron-grid>
+      </div>
+      
+      <div class="grid-container layout center">
+        <iron-grid>
+          <template is="dom-repeat" items="{{unitData}}">
+            <div class="xs6 s6 m4 l4 layout center-justified">
+              <paper-button class="grid-button layout vertical">
+                <iron-icon icon="[[item.icon]]-w"></iron-icon>
+                <br/>
+                <div>[[item.name]]</div>
+              </paper-button>
+            </div>
+          </template>
+        </iron-grid>
+      </div>
+
 
     </app-drawer-layout>
 
   </template>
-
+  <script type="text/javascript" src="units.js"></script>
   <script type="text/javascript" src="unit-converter-app.js"></script>
 </dom-module>
