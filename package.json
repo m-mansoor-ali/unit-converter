@@ -14,7 +14,8 @@
     "build": "polymer build",
     "serve": "polymer serve --open",
     "serve:built": "cd build/es5-bundled && polymer serve --open",
-    "develop": "npm run lint && npm run build && npm run serve"
+    "develop": "npm run lint && npm run build && npm run serve",
+    "demo": "npm run build && npm run serve:built"
   },
   "emitWarnings": true
 }
