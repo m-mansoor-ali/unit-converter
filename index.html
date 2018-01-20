@@ -8,10 +8,43 @@
   <title>Unit Converter</title>
   <meta name="description" content="Unit Converter is a really usefull app that lets you easily convert from various units into lots of others.">
 
+  <base href="/">
+  
   <!-- See https://goo.gl/OOhYW5 -->
   <link rel="manifest" href="/manifest.json">
 
+  <script>
+    /**
+    * [polymer-root-path]
+    *
+    * By default, we set `Polymer.rootPath` to the server root path (`/`).
+    * Leave this line unchanged if you intend to serve your app from the root
+    * path (e.g., with URLs like `my.domain/` and `my.domain/view1`).
+    *
+    * If you intend to serve your app from a non-root path (e.g., with URLs
+    * like `my.domain/my-app/` and `my.domain/my-app/view1`), edit this line
+    * to indicate the path from which you'll be serving, including leading
+    * and trailing slashes (e.g., `/my-app/`).
+    */
+    window.Polymer = {rootPath: '/'};
+
+    // Load and register pre-caching Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('service-worker.js', {
+          scope: Polymer.rootPath,
+        });
+      });
+    }
+  </script>
+  
   <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+  
+  <script>
+    if (!window.HTMLImports) {
+      HTMLImports = {};
+    }
+  </script>
 
   <link rel="import" href="/src/unit-converter-app/unit-converter-app.html">
 
@@ -27,6 +60,9 @@
 
 <body>
   <unit-converter-app></unit-converter-app>
+  <noscript>
+    Please enable JavaScript to view this website.
+  </noscript>
 </body>
 
 </html>
