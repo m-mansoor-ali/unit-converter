@@ -15,7 +15,9 @@
 <link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
 
-<link rel="import" href="../../bower_components/iron-grid/iron-grid.html">
+<link rel="import" href="../../bower_components/simple-grid/simple-grid.html">
+
+<link rel="import" href="unit-converter-app-styles.html">
 
 <link rel="import" href="unit-converter-app-styles.html">
 
@@ -38,99 +40,32 @@
       </app-drawer>
 
       <app-header-layout>
-        <app-header slot="header" reveals effects="waterfall">
+        <app-header slot="header" fixed>
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <div main-title>Unit Converter</div>
             <paper-icon-button icon="custom:close-w" style="margin-left: auto"></paper-icon-button>
           </app-toolbar>
         </app-header>
+
+        <div class="layout center">
+          <simple-grid>
+            <simple-grid-row>
+              <template is="dom-repeat" items="{{unitData}}">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                  <paper-button class="grid-button layout vertical">
+                    <iron-icon icon="[[item.icon]]-w"></iron-icon>
+                    <br/>
+                    <div>[[item.name]]</div>
+                  </paper-button>
+                </div>
+              </template>
+            </simple-grid-row>
+          </simple-grid>
+        </div>
+
       </app-header-layout>
-
-      <div class="grid-container layout center">
-        <iron-grid>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:clock-w"></iron-icon>
-              <br/>
-              <div>Time</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:ruler-w"></iron-icon>
-              <br/>
-              <div>Length</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:thermometer-lines-w"></iron-icon>
-              <br/>
-              <div>Temperature</div>
-            </paper-button>
-          </div>
-
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:speedometer-w"></iron-icon>
-              <br/>
-              <div>Speed</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:scale-balance-w"></iron-icon>
-              <br/>
-              <div>Mass</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:cube-outline-w"></iron-icon>
-              <br/>
-              <div>Area</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:flask-outline-w"></iron-icon>
-              <br/>
-              <div>Volume</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:floppy-w"></iron-icon>
-              <br/>
-              <div>Digital Storage</div>
-            </paper-button>
-          </div>
-          <div class="xs6 s6 m4 l4 layout center-justified">
-            <paper-button class="grid-button layout vertical">
-              <iron-icon icon="custom:fuel-w"></iron-icon>
-              <br/>
-              <div>Fuel</div>
-            </paper-button>
-          </div>
-        </iron-grid>
-      </div>
       
-      <div class="grid-container layout center">
-        <iron-grid>
-          <template is="dom-repeat" items="{{unitData}}">
-            <div class="xs6 s6 m4 l4 layout center-justified">
-              <paper-button class="grid-button layout vertical">
-                <iron-icon icon="[[item.icon]]-w"></iron-icon>
-                <br/>
-                <div>[[item.name]]</div>
-              </paper-button>
-            </div>
-          </template>
-        </iron-grid>
-      </div>
-
-
     </app-drawer-layout>
 
   </template>
