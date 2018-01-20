@@ -3,3 +3,5 @@
 /build
 /test
 npm-debug.log
+.firebaserc
+firebase.json
