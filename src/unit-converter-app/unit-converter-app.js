@@ -9,6 +9,14 @@ class UnitConverterApp extends Polymer.Element {
         return {
             unitData: {
                 type: Array
+            },
+            showClose: {
+                type: Boolean,
+                value: false
+            },
+            selectedItem: {
+                type: Object,
+                observer: "_selectedItemChanged"
             }
         };
     }
@@ -16,6 +24,27 @@ class UnitConverterApp extends Polymer.Element {
     connectedCallback(){
         super.connectedCallback();
         this.unitData = units;
+    }
+
+    _selectedItemChanged(newValue, oldValue){
+        if(null == newValue){
+            this.showClose = false;    
+        }else{
+            this.showClose = true;
+        }
+    }
+
+    measurementSelected(event){
+        this.selectedItem = event.model.item;
+        this.closeAppDrawer();
+    }
+
+    closeAppDrawer(){
+        this.$.appDrawer.close();
+    }
+
+    closeConversion(){
+        this.selectedItem = null;
     }
 }
 
