@@ -40,7 +40,9 @@ class UnitConverterApp extends Polymer.Element {
     }
 
     closeAppDrawer(){
-        this.$.appDrawer.close();
+        if(!this.$.appDrawer.persistent){
+            this.$.appDrawer.close();
+        }
     }
 
     closeConversion(){

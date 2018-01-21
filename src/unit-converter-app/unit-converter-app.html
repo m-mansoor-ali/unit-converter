@@ -31,9 +31,9 @@
 
       <app-drawer slot="drawer" has-scrolling-region swipe-open id="appDrawer">
         <app-toolbar>Menu</app-toolbar>
-        <paper-listbox>
+        <paper-listbox attr-for-selected="item-name" selected="[[selectedItem.name]]">
           <template is="dom-repeat" items="{{unitData}}">
-              <paper-icon-item on-tap="measurementSelected">
+              <paper-icon-item on-tap="measurementSelected" item-name="{{item.name}}">
                   <iron-icon slot="item-icon" icon="[[item.icon]]"></iron-icon> [[item.name]]</paper-icon-item>
           </template>
         </paper-listbox>
