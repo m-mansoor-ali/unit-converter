@@ -17,6 +17,21 @@ class UnitConverterApp extends Polymer.Element {
             selectedItem: {
                 type: Object,
                 observer: "_selectedItemChanged"
+            },
+            selectedUnit: {
+                type: Number,
+                observer: "_selectedUnitChanged"
+            },
+            inputValue: {
+                type: Number,
+                observer: "_inputValueChanged"
+            },
+            convertedValue: {
+                type: Number,
+                value: 0
+            },
+            isEnteredValueInvalid: {
+                type: Boolean
             }
         };
     }
@@ -34,8 +49,21 @@ class UnitConverterApp extends Polymer.Element {
         }
     }
 
+    _selectedUnitChanged(newValue, oldValue){
+        this.convertedValue = 
+            this.inputValue * this.selectedItem.calculations[newValue].valueInBaseUnit;
+    }
+
+    _inputValueChanged(newValue, oldValue) {
+        this.convertedValue =
+            newValue * this.selectedItem.calculations[this.selectedUnit].valueInBaseUnit;
+
+    }
+
     measurementSelected(event){
         this.selectedItem = event.model.item;
+        this.selectedUnit = 0;
+        console.log(this.selectedItem);
         this.closeAppDrawer();
     }
 
@@ -48,6 +76,15 @@ class UnitConverterApp extends Polymer.Element {
     closeConversion(){
         this.selectedItem = null;
     }
+
+    divide(a, b){
+        if(a && b){
+            return a / b;
+        }else{
+            return 0;
+        }
+    }
+
 }
 
 window.customElements.define(UnitConverterApp.is, UnitConverterApp);

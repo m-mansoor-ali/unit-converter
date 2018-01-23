@@ -39,7 +39,7 @@
         font-weight: 400;
       }
 
-      paper-listbox {
+      app-drawer paper-listbox {
         height: calc(100vh - 64px);
         overflow-x: auto;
       }
@@ -54,6 +54,73 @@
       simple-grid {
         padding-top: 3vh;
       }
+
+      paper-dropdown-menu-light, paper-dropdown-menu{
+        width: 100% !important;
+      }
+
+      /* planning to move this table in it's own seperate component in near future */
+      
+      paper-material{
+        background-color: white;
+      }
+
+      table {
+          width: 100%;
+          display: table;
+          border-collapse: collapse;
+          border-spacing: 0;
+      }
+      table, th, td {
+          border: none;
+      }
+      thead {
+          display: table-header-group;
+          vertical-align: middle;
+          border-color: inherit;
+      }
+      thead {
+          border-bottom: 1px solid #d0d0d0;
+      }
+      tbody {
+          display: table-row-group;
+          vertical-align: middle;
+          border-color: inherit;
+      }
+      td, th {
+          padding: 15px 15px;
+          display: table-cell;
+          text-align: left;
+          vertical-align: middle;
+          border-radius: 2px;
+          font-weight: 300;
+      }
+      td{
+        word-break: break-word;
+      }
+      th{
+        font-size: 15px;
+        color: gray;
+      }
+      th .columnTitle{
+        cursor: pointer;
+      }
+      table.striped>tbody>tr:nth-child(odd){
+        background-color:#f2f2f2
+      }
+      table.striped>tbody>tr>td{
+        border-radius:0
+      }
+      table.highlight>tbody>tr{
+        -webkit-transition:background-color .25s ease;transition:background-color .25s ease
+      }
+      table.highlight>tbody>tr:hover{
+        background-color:#f2f2f2
+      }
+      table.centered thead tr th,table.centered tbody tr td{
+        text-align:center
+      }
+
     </style>
   </template>
 </dom-module>

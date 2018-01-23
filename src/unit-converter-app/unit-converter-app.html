@@ -5,8 +5,12 @@
 <link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu-light.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
 
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
 
 <link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
 <link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
@@ -14,6 +18,8 @@
 <link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
 
 <link rel="import" href="../../bower_components/simple-grid/simple-grid.html">
 
@@ -33,8 +39,8 @@
         <app-toolbar>Menu</app-toolbar>
         <paper-listbox attr-for-selected="item-name" selected="[[selectedItem.name]]">
           <template is="dom-repeat" items="{{unitData}}">
-              <paper-icon-item on-tap="measurementSelected" item-name="{{item.name}}">
-                  <iron-icon slot="item-icon" icon="[[item.icon]]"></iron-icon> [[item.name]]</paper-icon-item>
+            <paper-icon-item on-tap="measurementSelected" item-name="{{item.name}}">
+              <iron-icon slot="item-icon" icon="[[item.icon]]"></iron-icon> [[item.name]]</paper-icon-item>
           </template>
         </paper-listbox>
       </app-drawer>
@@ -43,7 +49,7 @@
         <app-header slot="header" fixed>
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            
+
             <template is="dom-if" if="[[!showClose]]">
               <div main-title>Unit Converter</div>
             </template>
@@ -59,24 +65,78 @@
           </app-toolbar>
         </app-header>
 
-        <div class="layout center">
-          <simple-grid>
-            <simple-grid-row>
-              <template is="dom-repeat" items="{{unitData}}">
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                  <paper-button class="grid-button layout vertical" on-tap="measurementSelected">
-                    <iron-icon icon="[[item.icon]]-w"></iron-icon>
-                    <br/>
-                    <div>[[item.name]]</div>
-                  </paper-button>
+        <template is="dom-if" if="[[!showClose]]">
+          <div class="layout center">
+            <simple-grid>
+              <simple-grid-row>
+                <template is="dom-repeat" items="{{unitData}}">
+                  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    <paper-button class="grid-button layout vertical" on-tap="measurementSelected">
+                      <iron-icon icon="[[item.icon]]-w"></iron-icon>
+                      <br/>
+                      <div>[[item.name]]</div>
+                    </paper-button>
+                  </div>
+                </template>
+              </simple-grid-row>
+            </simple-grid>
+          </div>
+        </template>
+
+        <template is="dom-if" if="[[showClose]]">
+          <div class="layout center">
+            <simple-grid>
+              <simple-grid-row>
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <paper-dropdown-menu-light label="Unit">
+                    <paper-listbox slot="dropdown-content" selected="{{selectedUnit}}">
+                      <dom-repeat items="[[selectedItem.calculations]]">
+                        <template>
+                          <paper-item>[[item.name]] ([[item.unit]])</paper-item>
+                        </template>
+                      </dom-repeat>
+                    </paper-listbox>
+                  </paper-dropdown-menu-light>
                 </div>
-              </template>
-            </simple-grid-row>
-          </simple-grid>
-        </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                  <paper-input auto-validate label="Value..." error-message="This must be a number with up to 2 decimal places." pattern="[0-9]+(\.[0-9]{1,2})?"
+                    required value="{{inputValue}}" invalid="{{isEnteredValueInvalid}}">
+                  </paper-input>
+                </div>
+              </simple-grid-row>
+
+              <simple-grid-row>
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                  <paper-material elevation="3">
+                    <table class="striped">
+                      <thead>
+                        <tr>
+                          <th>Unit</th>
+                          <th>Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <template is="dom-repeat" items="{{selectedItem.calculations}}">
+                          <tr>
+                            <td>[[item.name]] ([[item.unit]])</td>
+                            <td>[[divide(convertedValue, item.valueInBaseUnit)]]</td>
+                          </tr>
+                        </template>
+                      </tbody>
+                    </table>
+
+                  </paper-material>
+                </div>
+              </simple-grid-row>
+
+            </simple-grid>
+          </div>
+        </template>
 
       </app-header-layout>
-      
+
     </app-drawer-layout>
 
   </template>
